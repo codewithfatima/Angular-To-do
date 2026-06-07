@@ -1,0 +1,73 @@
+<div class="todo-container">
+
+  <h1 class="title">📝 Todo App</h1>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="card">
+      <h3>{{ getTotalCount() }}</h3>
+      <p>Total</p>
+    </div>
+
+    <div class="card">
+      <h3>{{ completedTask() }}</h3>
+      <p>Completed</p>
+    </div>
+
+    <div class="card">
+      <h3>{{ pendingTask() }}</h3>
+      <p>Pending</p>
+    </div>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="top-bar">
+    <input
+      [(ngModel)]="searchText"
+      class="search"
+      placeholder="🔍 Search tasks..."
+    />
+
+    <div class="filters">
+      <button (click)="filterType='all'">All</button>
+      <button (click)="filterType='completed'">Completed</button>
+      <button (click)="filterType='pending'">Pending</button>
+    </div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-box">
+    <input
+      [(ngModel)]="task"
+      placeholder="Enter new task..."
+    />
+
+    <button (click)="addTask()">
+      + Add
+    </button>
+  </div>
+
+  <!-- LIST -->
+  <ul class="list">
+    <li *ngFor="let item of getFilteredTasks()">
+      <span [class.done]="item.completed">
+        {{ item.name }}
+      </span>
+
+      <div class="actions">
+        <button (click)="compoletedTAsk(item)">
+          {{ item.completed ? 'Undo' : 'Done' }}
+        </button>
+
+        <button (click)="editTask(item)" class="edit">
+          Edit
+        </button>
+
+        <button (click)="deleteTask(item)" class="delete">
+          Delete
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</div>
