@@ -6,7 +6,7 @@ body {
 .todo-container {
   width: 550px;
   margin: 40px auto;
-  background: white;
+  background: rgb(230, 213, 213);
   padding: 25px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
